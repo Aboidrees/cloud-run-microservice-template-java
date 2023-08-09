@@ -48,12 +48,12 @@ name: Deploy to Cloud Run from Source
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "main" ]
 
 env:
-  PROJECT_ID: '${{ secrets.YOUR_PROJECT_ID }}' # TODO: update Google Cloud project id
-  SERVICE: '${{ secrets.YOUR_SERVICE_NAME }}' # TODO: update Cloud Run service name
-  REGION: '${{ secrets.YOUR_SERVICE_REGION }}' # TODO: update Cloud Run service region
+  PROJECT_ID: rasen-388808 #'${{ secrets.YOUR_PROJECT_ID }}' # TODO: update Google Cloud project id
+  SERVICE: testing-load#'${{ secrets.YOUR_SERVICE_NAME }}' # TODO: update Cloud Run service name
+  REGION: me-central1 #'${{ secrets.YOUR_SERVICE_REGION }}' # TODO: update Cloud Run service region
 
 jobs:
   deploy:
@@ -79,7 +79,7 @@ jobs:
         id: auth
         uses: 'google-github-actions/auth@v0'
         with:
-          credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
+          credentials_json: '${{ secrets.SA_CREDS }}'
 
       - name: Deploy to Cloud Run
         id: deploy
